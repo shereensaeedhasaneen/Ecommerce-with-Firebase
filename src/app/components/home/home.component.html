@@ -1,1 +1,16 @@
-<p>home works!</p>
+<div class="container">
+  <div class="row">
+      <div class="col-3 mb-5 offset-1" *ngFor="let good of goods ; index as i">
+
+        <div class="card" style="width: 18rem;">
+          <img [src]="good.photoUrl" height="200px" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Good Name : {{good.good_name | titlecase}}.</h5>
+            <p class="card-text">Price {{good.price | currency}}.</p>
+            <button class="btn btn-primary" (click)="AddToCart(i)">Add To Cart</button>
+          </div>
+        </div>
+
+      </div>
+  </div>
+</div>
