@@ -29,3 +29,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## ng-bootstrap 
 ng add @ng-bootstrap/ng-bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+## Firebase (cloud firestore)
+ng add @angular/fire
+add Firebaseconfig object in environment
+initialize firebase in appModule
