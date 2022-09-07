@@ -1,1 +1,24 @@
-<p>signup works!</p>
+<div class="body">
+  <h2 class="text-center">Sign Up</h2>
+  <form #form="ngForm" (ngSubmit)="signUp(form.value)">
+    <input ngModel name="name" #name="ngModel" type="text" class="form-control" placeholder="your name" required>
+    <div class="alert alert-danger" *ngIf="name.invalid && name.touched"> Name is Required</div>
+
+    <input ngModel name="email" type="email" #email="ngModel" class="form-control" placeholder="your email" required email>
+    <div class="alert alert-danger" *ngIf="email.touched && email.errors?.required"> Email is Required</div> <!--لازم نحط ال ؟ عشان دي حاجه اختياريه ممكن تبقي موجوده وممكن لا-->
+    <div class="alert alert-danger" *ngIf="email.touched && email.errors?.email"> your input doesn't match format</div>
+
+    <input ngModel name="password" #password="ngModel" type="password" class="form-control" placeholder="your password" required minlength="6">
+    <div class="alert alert-danger" *ngIf="password.touched && password.errors?.required"> password is Required</div>
+    <div class="alert alert-danger" *ngIf="password.touched && password.errors?.minlength"> password must be 6 characters or more</div>
+
+    <input ngModel name="confirmpassword" #confirmpassword="ngModel" type="password" class="form-control" placeholder="confirm password" required>
+    <div class="alert alert-danger" *ngIf="confirmpassword.invalid && confirmpassword.touched"> password is Required</div>
+    <div class="alert alert-danger" *ngIf="password.value != confirmpassword.value  && confirmpassword.touched"> password not matched</div> <!--لو شيلت شرط التاتش دا الايرور دا هيظهر لما اجي اكتب في الباسورد كمان مش في الكونفيرم باسورد بس-->
+
+    <input ngModel name="address" type="text" class="form-control" placeholder="Address" required>
+
+    <button class="btn btn-primary" [disabled]="form.invalid || password.value != confirmpassword.value " > create Account</button> <!--(click)="signUp(form.value)"-->
+
+  </form>
+</div>
