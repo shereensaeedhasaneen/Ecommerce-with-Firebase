@@ -1,12 +1,17 @@
+import { observable, Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Injectable } from '@angular/core';
-
+import {GoogleAuthProvider , GithubAuthProvider , FacebookAuthProvider} from '@angular/fire/auth'
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 
-  constructor(private afAuth:AngularFireAuth) { }
+  userId:string=''
+  constructor(private afAuth:AngularFireAuth) {
+
+   }
+
 
   signUp(email:string , password:string){
 
@@ -20,5 +25,13 @@ export class AuthServiceService {
 
   Logout(){
     return this.afAuth.signOut()
+  }
+
+  check_If_Exist_User(){
+      return this.afAuth.user
+  }
+
+  SignIn_With_Google(){
+    return this.afAuth.signInWithPopup(new GoogleAuthProvider)
   }
 }
