@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { AuthServiceService } from './../../services/auth-service.service';
+import { Iuser } from './../../models/iuser';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  errorMessage:string=''
+  constructor(private authService:AuthServiceService , private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  Login(FormValue:Iuser){
+      this.authService.Login(FormValue.email , FormValue.password)
+      .then(res=>{
+        console.log(res)
+        this.router.navigate(['/'])
+      }).catch(err=>{
+        console.log(err)
+        this.errorMessage = err.message
+      })
+
+  }
 }

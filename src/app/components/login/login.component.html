@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="body">
+  <h2 class="text-center">Sign Up</h2>
+  <form #form="ngForm" (ngSubmit)="Login(form.value)">
+
+    <input ngModel name="email" type="email" #email="ngModel" class="form-control" placeholder="your email" required email>
+    <div class="alert alert-danger" *ngIf="email.touched && email.errors?.required"> Email is Required</div> <!--لازم نحط ال ؟ عشان دي حاجه اختياريه ممكن تبقي موجوده وممكن لا-->
+    <div class="alert alert-danger" *ngIf="email.touched && email.errors?.email"> your input doesn't match format</div>
+
+    <input ngModel name="password" #password="ngModel" type="password" class="form-control" placeholder="your password" required minlength="6">
+    <div class="alert alert-danger" *ngIf="password.touched && password.errors?.required"> password is Required</div>
+    <div class="alert alert-danger" *ngIf="password.touched && password.errors?.minlength"> password must be 6 characters or more</div>
+
+
+    <button class="btn btn-primary" [disabled]="form.invalid" > create Account</button> <!--(click)="signUp(form.value)"-->
+
+  </form>
+
+  <div class="alert alert-danger mt-5" *ngIf="errorMessage">{{errorMessage}}</div>
+</div>
