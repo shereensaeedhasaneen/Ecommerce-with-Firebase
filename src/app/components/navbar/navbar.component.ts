@@ -9,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   isOpen:boolean=false
+  is_Exist_user:boolean=false;
   constructor(private authService:AuthServiceService , private router:Router) { }
 
   ngOnInit(): void {
+    this.check_If_Exist_User()
+  }
+
+  check_If_Exist_User(){
+    this.authService.check_If_Exist_User().subscribe(res=>{
+      console.log(res)
+      this.is_Exist_user= (res) ? true :false
+      if(res){
+        this.authService.userId=res.uid // ==> عشان اقراءه علطول في اي صفحه او في ال cart منغير مانعمل سبسكرايب تاني لل  check_If_Exist_User
+      }
+    })
   }
 
   logout(){
