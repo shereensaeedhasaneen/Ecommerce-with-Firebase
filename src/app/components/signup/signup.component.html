@@ -21,4 +21,6 @@
     <button class="btn btn-primary" [disabled]="form.invalid || password.value != confirmpassword.value " > create Account</button> <!--(click)="signUp(form.value)"-->
 
   </form>
+
+  <div class="alert alert-danger mt-5" *ngIf="errorMessage">{{errorMessage}}</div>
 </div>
