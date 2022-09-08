@@ -13,4 +13,12 @@ export class AuthServiceService {
     return this.afAuth.createUserWithEmailAndPassword(email,password)
     // authState ==> if user logged in or not
   }
+
+  Login(email:string , password:string){
+    return this.afAuth.signInWithEmailAndPassword(email,password)
+  }
+
+  Logout(){
+    return this.afAuth.signOut()
+  }
 }
