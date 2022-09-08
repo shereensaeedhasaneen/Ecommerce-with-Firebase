@@ -15,7 +15,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
+import {AngularFireAuthModule} from '@angular/fire/compat/auth'
 //ng add @angular/fire
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     NgbModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
